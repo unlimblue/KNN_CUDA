@@ -1,0 +1,31 @@
+============================= test session starts ==============================
+platform linux -- Python 3.6.6, pytest-4.0.1, py-1.7.0, pluggy-0.8.0 -- /home/shuli/Env/py36/Python/virtual/env/bin/python
+cachedir: .pytest_cache
+benchmark: 3.1.1 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /home/shuli/Repo/KNN, inifile:
+plugins: benchmark-3.1.1
+collecting ... collected 11 items
+
+tests/test_knn_cuda.py::TestKNNCuda::test_knn_cuda_performance PASSED    [  9%]
+tests/test_knn_cuda.py::TestKNNCuda::test_knn_cuda_400_5_1000 PASSED     [ 18%]
+tests/test_knn_cuda.py::TestKNNCuda::test_knn_cuda_400_5_100 PASSED      [ 27%]
+tests/test_knn_cuda.py::TestKNNCuda::test_knn_cuda_400_5_10 PASSED       [ 36%]
+tests/test_knn_cuda.py::TestKNNCuda::test_knn_cuda_400_5_1001 PASSED     [ 45%]
+tests/test_knn_cuda.py::TestKNNCuda::test_knn_cuda_400_5_101 PASSED      [ 54%]
+tests/test_knn_cuda.py::TestKNNCuda::test_knn_cuda_400_5_11 PASSED       [ 63%]
+tests/test_knn_cuda.py::TestKNNCuda::test_knn_cuda_400_5_300000_50 PASSED [ 72%]
+tests/test_knn_cuda.py::TestKNNCuda::test_knn_cuda_400_5_300001_50 PASSED [ 81%]
+tests/test_knn_cuda.py::TestKNNCuda::test_knn_cuda_400_5_10000 PASSED    [ 90%]
+tests/test_knn_cuda.py::TestKNNCuda::test_knn_cuda_400_5_10001 PASSED    [100%]
+
+
+Computing stats ...Computing stats ... group 1/1Computing stats ... group 1/1: minComputing stats ... group 1/1: min (1/1)Computing stats ... group 1/1: min (1/1)Computing stats ... group 1/1: maxComputing stats ... group 1/1: max (1/1)Computing stats ... group 1/1: max (1/1)Computing stats ... group 1/1: meanComputing stats ... group 1/1: mean (1/1)Computing stats ... group 1/1: mean (1/1)Computing stats ... group 1/1: medianComputing stats ... group 1/1: median (1/1)Computing stats ... group 1/1: median (1/1)Computing stats ... group 1/1: iqrComputing stats ... group 1/1: iqr (1/1)Computing stats ... group 1/1: iqr (1/1)Computing stats ... group 1/1: stddevComputing stats ... group 1/1: stddev (1/1)Computing stats ... group 1/1: stddev (1/1)Computing stats ... group 1/1: opsComputing stats ... group 1/1: ops (1/1)Computing stats ... group 1/1: ops (1/1)Computing stats ... group 1/1: ops: outliersComputing stats ... group 1/1: ops: outliers (1/1)Computing stats ... group 1/1: ops: roundsComputing stats ... group 1/1: ops: rounds (1/1)Computing stats ... group 1/1: ops: iterationsComputing stats ... group 1/1: ops: iterations (1/1)-------------------------------------------------- benchmark: 1 tests -------------------------------------------------
+Name (time in ms)                 Min      Max     Mean  StdDev   Median     IQR  Outliers      OPS  Rounds  Iterations
+-----------------------------------------------------------------------------------------------------------------------
+test_knn_cuda_performance     10.8398  10.8665  10.8496  0.0108  10.8486  0.0153       1;0  92.1694       5           1
+-----------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+========================= 11 passed in 115.03 seconds ==========================
