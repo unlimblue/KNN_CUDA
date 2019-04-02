@@ -2,12 +2,12 @@
 
 + ref: [kNN-CUDA](https://github.com/vincentfpgarcia/kNN-CUDA)
 + ref: [pytorch knn cuda](https://github.com/chrischoy/pytorch_knn_cuda)
-+ author: [sli](sli@mail.bnu.edu.cn)
++ author: [sli@mail.bnu.edu.cn](sli@mail.bnu.edu.cn)
 
 #### Modifications 
 + Aten support
 + pytorch v1.0+ support
- 
++ pytorch c++ extention need [ninja](https://github.com/ninja-build/ninja) 
 
 #### Performance
 
