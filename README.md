@@ -73,5 +73,5 @@ knn = KNN(k=10, transpose_mode=True)
 ref = torch.rand(32, 1000, 5).cuda()
 query = torch.rand(32, 50, 5).cuda()
 
-dist, indx = knn(ref, query)  # 32 x 50 x 5
+dist, indx = knn(ref, query)  # 32 x 50 x 10
 ```
