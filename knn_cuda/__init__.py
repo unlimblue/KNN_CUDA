@@ -63,8 +63,8 @@ class KNN(nn.Module):
         with torch.no_grad():
             batch_size = ref.size(0)
             D, I = [], []
-            for i in range(batch_size):
-                r, q = _T(ref[i], self._t), _T(query[i], self._t)
+            for bi in range(batch_size):
+                r, q = _T(ref[bi], self._t), _T(query[bi], self._t)
                 d, i = knn(r.float(), q.float(), self.k)
                 d, i = _T(d, self._t), _T(i, self._t)
                 D.append(d)

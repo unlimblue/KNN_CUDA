@@ -9,9 +9,16 @@ def t2n(t):
 
 
 def run_kdtree(ref, query, k):
-    tree = KDTree(ref, leaf_size=100)
-    d, i = tree.query(query, k=k)
-    return d, i
+    bs = ref.shape[0]
+    D, I = [], []
+    for j in range(bs):
+        tree = KDTree(ref[j], leaf_size=100)
+        d, i = tree.query(query[j], k=k)
+        D.append(d)
+        I.append(i)
+    D = np.stack(D)
+    I = np.stack(I)
+    return D, I
 
 
 def run_knnCuda(ref, query, k):
@@ -26,8 +33,8 @@ def compare(k, dim, n1, n2=-1):
     if n2 < 0:
         n2 = n1
     for _ in range(5):
-        ref = np.random.random((n1, dim))
-        query = np.random.random((n2, dim))
+        ref = np.random.random((2, n1, dim))
+        query = np.random.random((2, n2, dim))
 
         kd_dist, kd_idices = run_kdtree(ref, query, k)
         kn_dist, kn_idices = run_knnCuda(ref, query, k)
@@ -45,8 +52,8 @@ class TestKNNCuda:
     def test_knn_cuda_performance(self, benchmark):
         dim = 5
         k = 100
-        ref = np.random.random((224, dim))
-        query = np.random.random((224, dim))
+        ref = np.random.random((1, 224, dim))
+        query = np.random.random((1, 224, dim))
         benchmark(run_knnCuda, ref, query, k)
 
     def test_knn_cuda_400_5_1000(self):
@@ -68,10 +75,10 @@ class TestKNNCuda:
         compare(2, 5, 11)
 
     def test_knn_cuda_400_5_300000_50(self):
-        compare(400, 5, 300000, 50)
+        compare(400, 5, 30000, 50)
 
     def test_knn_cuda_400_5_300001_50(self):
-        compare(400, 5, 300001, 50)
+        compare(400, 5, 30001, 50)
 
     def test_knn_cuda_400_5_10000(self):
         compare(400, 5, 10000)
