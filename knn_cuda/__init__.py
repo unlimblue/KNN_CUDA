@@ -4,6 +4,9 @@ import torch.nn as nn
 from torch.utils.cpp_extension import load
 
 
+__version__ = "0.2"
+
+
 def load_cpp_ext(ext_name):
     root_dir = os.path.join(os.path.split(__file__)[0])
     ext_csrc = os.path.join(root_dir, "csrc")
@@ -56,9 +59,17 @@ class KNN(nn.Module):
         self._t = transpose_mode
 
     def forward(self, ref, query):
+        assert ref.size(0) == query.size(0), "ref.shape={} != query.shape={}".format(ref.shape, query.shape)
         with torch.no_grad():
-            ref, query = _T(ref, self._t), _T(query, self._t)
-            d, i = knn(ref.float(), query.float(), self.k)
-            d, i = _T(d, self._t), _T(i, self._t)
-        return d, i
+            batch_size = ref.size(0)
+            D, I = [], []
+            for i in range(batch_size):
+                r, q = _T(ref[i], self._t), _T(query[i], self._t)
+                d, i = knn(r.float(), q.float(), self.k)
+                d, i = _T(d, self._t), _T(i, self._t)
+                D.append(d)
+                I.append(i)
+            D = torch.stack(D, dim=0)
+            I = torch.stack(I, dim=0)
+        return D, I
 

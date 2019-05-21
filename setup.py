@@ -1,5 +1,6 @@
 import os
 from setuptools import setup, find_packages
+from knn_cuda import __version__
 
 
 with open('requirements.txt') as f:
@@ -7,7 +8,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='KNN_CUDA',
-    version="0.1",
+    version=__version__,
     description='pytorch version knn support cuda.',
     author='Shuaipeng Li',
     author_email='sli@mail.bnu.edu.cn',
