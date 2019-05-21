@@ -7,7 +7,7 @@
 #### Modifications 
 + Aten support
 + pytorch v1.0+ support
-+ pytorch c++ extention need [ninja](https://github.com/ninja-build/ninja) 
++ pytorch c++ extention 
 
 #### Performance
 
@@ -24,6 +24,24 @@
 | 1000   | 2.30 ms | 1.40 ms | 652/1024 |
 
 
+#### Install
+
+
++ from source
+
+```bash
+git clone https://github.com/unlimblue/KNN_CUDA.git
+cd KNN_CUDA
+make && make install
+```
+
++ from wheel
+
+```bash
+pip install --upgrade https://github.com/unlimblue/KNN_CUDA/releases/download/0.1/KNN_CUDA-0.1-py3-none-any.whl
+```
+
+
 #### Usage
 
 ```python
@@ -32,7 +50,6 @@ import torch
 # Make sure your CUDA is available.
 assert torch.cuda.is_available()
 
-import numpy as np
 from knn_cuda import KNN
 """
 if transpose_mode is True, 
@@ -53,8 +70,8 @@ else
 
 knn = KNN(k=10, transpose_mode=True)
 
-ref = torch.from_numpy(np.random.random(1000, 5)).cuda()
-query = torch.from_numpy(np.random.random(50, 5)).cuda()
+ref = torch.rand(1000, 5).cuda()
+query = torch.rand(50, 5).cuda()
 
 dist, indx = knn(ref, query)
 ```
