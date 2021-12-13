@@ -9,8 +9,8 @@ This is the knn_cuda branch compatible for Windows OS. The original code is from
 #### Install
 
 + add msvc to the Path environment variable (System variable) by:
-    1. go to Control Panel → System and Security → System → Advanced System Settings → New... (under System variables):
-    2. add to Path: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\bin\Hostx64\x64
+    1. go to *Control Panel → System and Security → System → Advanced System Settings → New...* (under System variables):
+    2. add to Path: *C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\bin\Hostx64\x64*
     → this will get you rid of the following error: Error checking compiler version for cl: [WinError 2] The system cannot find the file specified
 + uninstall original knn_cuda if you have installed it before
 
