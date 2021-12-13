@@ -16,7 +16,7 @@ This is the knn_cuda branch compatible for Windows OS. The original code is from
 
 + git clone *windows* branch
 ```bash
-git clone --branch widnows https://github.com/blukaz/KNN_CUDA
+git clone --branch windows https://github.com/blukaz/KNN_CUDA
 ```
 
 + install from source
