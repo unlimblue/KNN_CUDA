@@ -1,6 +1,8 @@
 #include <vector>
+#include <stdint.h>
 #include <torch/extension.h>
 #include <ATen/cuda/CUDAContext.h>
+#include <torch/types.h>
 
 #define CHECK_CONTIGUOUS(x) AT_ASSERTM(x.is_contiguous(), #x " must be contiguous")
 #define CHECK_TYPE(x, t) AT_ASSERTM(x.dtype() == t, #x " must be " #t)
@@ -16,7 +18,7 @@ void knn_device(
     int dim, 
     int k, 
     float* dist_dev, 
-    long* ind_dev, 
+    long long* ind_dev,
     cudaStream_t stream
     );
 
@@ -36,7 +38,7 @@ std::vector<at::Tensor> knn(
     auto dist = at::empty({ref_nb, query_nb}, query.options().dtype(at::kFloat));
     auto ind = at::empty({k, query_nb}, query.options().dtype(at::kLong));
     float * dist_dev = dist.data<float>();
-    long * ind_dev = ind.data<long>();
+    long long * ind_dev = ind.data<long long>();
     
     cudaStream_t stream = at::cuda::getCurrentCUDAStream();
 

@@ -1,18 +1,18 @@
 .PHONY : build reqs install clean
-NINJA := $(shell command -v ninja 2> /dev/null)
+NINJA := $(-v ninja > /NUL)
 
 
 build : reqs
-	python3 setup.py bdist_wheel
+	python setup.py bdist_wheel
 
 reqs :
 ifndef NINJA 
-	sudo cp ./ninja /usr/bin
+	copy %cd%\ninja C:\Windows\System32\bin
 endif 
 	pip3 install -r requirements.txt
 
 install :
-	pip3 install --upgrade dist/*.whl
+	pip3 install --upgrade --find-links=dist KNN_CUDA
 
 clean :
-	-rm -rf build dist/* *.egg-info
+	-rm -rf build %cd%\dist\* *.egg-info
