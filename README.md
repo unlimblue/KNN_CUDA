@@ -4,6 +4,7 @@
 + ref: [pytorch knn cuda](https://github.com/chrischoy/pytorch_knn_cuda)
 + author: [sli@mail.bnu.edu.cn](sli@mail.bnu.edu.cn)
 
+
 #### Modifications 
 + Aten support
 + pytorch v1.0+ support
@@ -47,6 +48,16 @@ And then, make sure [`ninja`](https://ninja-build.org/) has been installed:
 wget -P /usr/bin https://github.com/unlimblue/KNN_CUDA/raw/master/ninja
 ```
 
++ for windows
+
+You should use branch `windows`:
+
+```bash
+git clone --branch windows https://github.com/unlimblue/KNN_CUDA.git
+cd C:\\PATH_TO_KNN_CUDA
+make
+make install
+```
 
 #### Usage
 
